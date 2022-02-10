@@ -12,17 +12,17 @@ Link to UML Class Diagram:
 in same diagram.net as use case
 
 Three Use Cases that you will implement first:
-1. -
-2. - 
-3. - 
+1. - deposit/transfer/withdraw
+2. - getBalance
+3. - freeze/unfreeze
 
 Which classes & methods do you need to implement for these use cases?
 (Indicated which team member is responsible for the implemenation)
-1. -
-2. -
-3. -
-4. -
-5. << add more as needed >>
+1. - Account - W
+2. - getBalance - W
+3. - deposite/transfer/withdraw - A
+4. - freeze/unfreeze - V
+5. - Abstract teller class - W
 
 Don't forget to use Test-Driven Development (TDD)
 1. Write Class and Method Function Headers
