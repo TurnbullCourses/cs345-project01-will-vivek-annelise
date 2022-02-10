@@ -12,13 +12,13 @@ Link to UML Class Diagram:
 in same diagram.net as use case
 
 Three Use Cases that you will implement first:
-1. -
-2. - 
-3. - 
+1. - deposit/transfer/withdraw
+2. - getBalance
+3. - freeze/unfreeze
 
 Which classes & methods do you need to implement for these use cases?
 (Indicated which team member is responsible for the implemenation)
-1. -
+1. - Account
 2. -
 3. -
 4. -
