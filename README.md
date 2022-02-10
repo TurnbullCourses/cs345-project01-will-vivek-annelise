@@ -22,7 +22,7 @@ Which classes & methods do you need to implement for these use cases?
 2. - getBalance - W
 3. - deposite/transfer/withdraw - A
 4. - freeze/unfreeze - V
-5. << add more as needed >>
+5. - Abstract teller class - W
 
 Don't forget to use Test-Driven Development (TDD)
 1. Write Class and Method Function Headers
