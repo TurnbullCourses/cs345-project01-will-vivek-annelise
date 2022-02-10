@@ -18,10 +18,10 @@ Three Use Cases that you will implement first:
 
 Which classes & methods do you need to implement for these use cases?
 (Indicated which team member is responsible for the implemenation)
-1. - Account
-2. -
-3. -
-4. -
+1. - Account - W
+2. - getBalance - W
+3. - deposite/transfer/withdraw - A
+4. - freeze/unfreeze - V
 5. << add more as needed >>
 
 Don't forget to use Test-Driven Development (TDD)
