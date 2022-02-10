@@ -6,10 +6,10 @@ Names:
 << add 3-4 names here >>
 
 Link to UML Use Case Diagram:
-<< add linkk here >>
+https://drive.google.com/file/d/1akx4m8ExvbIGD0TUsWlKrs0haMGBF2OT/view?usp=sharing
 
 Link to UML Class Diagram:
-<< add link here >>
+in same diagram.net as use case
 
 Three Use Cases that you will implement first:
 1. -
