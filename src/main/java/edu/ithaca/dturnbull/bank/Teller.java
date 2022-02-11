@@ -1,18 +1,18 @@
 package edu.ithaca.dturnbull.bank;
 
 public class Teller {
-    private double balance;
+    
 
     public double getBalance(Account account){
         return account.balance;
     }
 
-    public void deposit(double amount){
+    public static void deposit(Account account, double amount){
         if(amountValid(amount) == false){
             throw new IllegalArgumentException();
         }
 
-        balance+=amount;
+        account.balance+= amount;
     }
 
 
@@ -40,20 +40,29 @@ public class Teller {
      * @throws InsufficientFundsException
      * @post reduces the balance by amount if amount is non-negative and smaller than balance
      */
-    public void withdraw(double amount) throws InsufficientFundsException{
+    public static void withdraw(Account account, double amount) throws InsufficientFundsException{
         if(amountValid(amount) == false){
             throw new IllegalArgumentException("invalid withdrawl amount");
         }
-        if (amount <= balance){
-            balance -= amount;
+        if (amount <= account.balance){
+            account.balance -= amount;
         }
-        if (amount > balance){
+        if (amount > account.balance){
             throw new InsufficientFundsException("Not enough money");
         }
     }
 
-    public void transfer(Account to, Account from, double amount){
-
+    public static void transfer(Account accountTo, Account accountFrom, double amount) throws InsufficientFundsException{
+        if(amountValid(amount) == false){
+            throw new IllegalArgumentException();
+        }
+        if (amount > accountFrom.balance){
+            throw new InsufficientFundsException("Not enough money");
+        }
+        else{
+            withdraw(accountFrom, amount);
+            deposit(accountTo, amount);
+        }
     }
 
     public void freezeAccount(Account account){
