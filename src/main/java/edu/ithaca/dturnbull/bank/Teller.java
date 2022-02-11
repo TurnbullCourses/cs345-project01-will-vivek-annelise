@@ -1,7 +1,8 @@
 package edu.ithaca.dturnbull.bank;
 
 public class Teller {
-    
+    private double balance;
+
     public double getBalance(Account account){
         return account.balance;
     }

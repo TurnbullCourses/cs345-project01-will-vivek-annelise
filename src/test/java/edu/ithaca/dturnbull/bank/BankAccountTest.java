@@ -20,6 +20,12 @@ class BankAccountTest {
 
         assertEquals(100, bankAccount.getBalance(), 0.001);
         assertThrows(InsufficientFundsException.class, () -> bankAccount.withdraw(300));
+        
+        bankAccount.withdraw(0); // test for withdrawing 0
+        assertEquals(200, bankAccount.getBalance(), 0.001);
+        bankAccount.withdraw(100); // test for proper withdrawl
+        assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(-100)); // negative amount - boarder case
+        assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(1.234)); // decimal
     }
 
     @Test
