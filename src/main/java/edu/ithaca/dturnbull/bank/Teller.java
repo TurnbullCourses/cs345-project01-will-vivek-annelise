@@ -2,11 +2,20 @@ package edu.ithaca.dturnbull.bank;
 
 public class Teller {
     
-
+    /**
+     * @param account
+     * @return amount in account
+     */
     public static double getBalance(Account account){
         return account.balance;
     }
 
+    /**
+     * @param account
+     * @param amount
+     * @throws FrozenAccountException
+     * @post account will have amount more in balance
+     */
     public static void deposit(Account account, double amount) throws FrozenAccountException{
         checkFrozen(account);
         if(amountValid(amount) == false){
@@ -20,7 +29,7 @@ public class Teller {
     /**
      * @param amount
      * @throws IllegalArgumentException
-     * @post checks if negative or has 2 decimal places
+     * @returns false if negative or has 2 decimal places
      */
     public static boolean amountValid(double amount){
         //check for negative
@@ -38,9 +47,8 @@ public class Teller {
     }
 
     /**
-     * @param amount
+     * @param account
      * @throws FrozenAccountException
-     * @post checks if account is frozen
      */
     public static void checkFrozen(Account account) throws FrozenAccountException{
         if(account.frozen == true){
@@ -49,6 +57,8 @@ public class Teller {
     }
 
     /**
+     * @param account
+     * @param amount
      * @throws InsufficientFundsException
      * @throws FrozenAccountException
      * @post reduces the balance by amount if amount is non-negative and smaller than balance
@@ -66,6 +76,14 @@ public class Teller {
         }
     }
 
+    /**
+     * @param accountTo
+     * @param accountFrom
+     * @param amount
+     * @throws InsufficientFundsException
+     * @throws FrozenAccountException
+     * @post accountTo's balance is increased by amount, accountFrom's balance is decreased by amount
+     */
     public static void transfer(Account accountTo, Account accountFrom, double amount) throws InsufficientFundsException, FrozenAccountException{
         checkFrozen(accountTo);
         checkFrozen(accountFrom);
@@ -81,11 +99,19 @@ public class Teller {
         }
     }
 
+    /**
+     * @param account
+     * @post freezes account
+     */
     public void freezeAccount(Account account){
         account.frozen = true;
 
     }
 
+    /**
+     * @param account
+     * @post unfreezes account
+     */
     public void unfreezeAccount(Account account){
         account.frozen = false;
 
