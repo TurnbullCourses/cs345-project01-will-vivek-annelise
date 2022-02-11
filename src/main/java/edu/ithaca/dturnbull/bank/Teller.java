@@ -65,12 +65,12 @@ public class Teller {
         }
     }
 
-    public void freezeAccount(Account account){
+    public static void freezeAccount(Account account){
         account.frozen = true;
 
     }
 
-    public void unfreezeAccount(Account account){
+    public static void unfreezeAccount(Account account){
         account.frozen = false;
 
     }
