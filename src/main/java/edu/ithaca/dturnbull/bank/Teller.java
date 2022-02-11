@@ -1,18 +1,19 @@
 package edu.ithaca.dturnbull.bank;
 
 public class Teller {
-    private double balance;
+    
 
     public double getBalance(Account account){
         return account.balance;
     }
 
-    public void deposit(double amount){
+    //I feel like these methods should be in Account rather than in Teller
+    public void deposit(Account account, double amount){
         if(amountValid(amount) == false){
             throw new IllegalArgumentException();
         }
 
-        balance+=amount;
+        account.setBalance(account.getBalance() + amount);
     }
 
 
@@ -52,8 +53,16 @@ public class Teller {
         }
     }
 
-    public void transfer(Account to, Account from, double amount){
-
+    public void transfer(Account accountTo, Account accountFrom, double amount) throws InsufficientFundsException{
+        if(amountValid(amount) == false){
+            throw new IllegalArgumentException();
+        }
+        if (amount > balance){
+            throw new InsufficientFundsException("Not enough money");
+        }
+        else{
+            Teller.withdraw(accountFrom, amount)
+        }
     }
 
     public void freezeAccount(Account account){
