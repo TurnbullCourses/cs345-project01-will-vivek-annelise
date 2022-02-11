@@ -7,7 +7,8 @@ public class Teller {
         return account.balance;
     }
 
-    public static void deposit(Account account, double amount){
+    public static void deposit(Account account, double amount) throws FrozenAccountException{
+        checkFrozen(account);
         if(amountValid(amount) == false){
             throw new IllegalArgumentException();
         }
@@ -37,10 +38,23 @@ public class Teller {
     }
 
     /**
+     * @param amount
+     * @throws FrozenAccountException
+     * @post checks if account is frozen
+     */
+    public static void checkFrozen(Account account) throws FrozenAccountException{
+        if(account.frozen == true){
+            throw new FrozenAccountException();
+        }
+    }
+
+    /**
      * @throws InsufficientFundsException
+     * @throws FrozenAccountException
      * @post reduces the balance by amount if amount is non-negative and smaller than balance
      */
-    public static void withdraw(Account account, double amount) throws InsufficientFundsException{
+    public static void withdraw(Account account, double amount) throws InsufficientFundsException, FrozenAccountException{
+        checkFrozen(account);
         if(amountValid(amount) == false){
             throw new IllegalArgumentException("invalid withdrawl amount");
         }
@@ -52,7 +66,9 @@ public class Teller {
         }
     }
 
-    public static void transfer(Account accountTo, Account accountFrom, double amount) throws InsufficientFundsException{
+    public static void transfer(Account accountTo, Account accountFrom, double amount) throws InsufficientFundsException, FrozenAccountException{
+        checkFrozen(accountTo);
+        checkFrozen(accountFrom);
         if(amountValid(amount) == false){
             throw new IllegalArgumentException();
         }
