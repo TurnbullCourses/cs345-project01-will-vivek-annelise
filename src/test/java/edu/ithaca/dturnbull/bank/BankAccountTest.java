@@ -60,6 +60,16 @@ class BankAccountTest {
     }
 
     @Test
+    void amountValidTest(){
+        //change to Teller
+        assertTrue(BankAccount.amountValid(12.34)); //valid
+        assertTrue(BankAccount.amountValid(12)); // whole number
+        assertTrue(BankAccount.amountValid(12.3)); //less than 2 decimals
+        assertFalse(BankAccount.amountValid(12.345));   //too many decimals
+        assertFalse(BankAccount.amountValid(-12.34));   //negative value
+    }
+
+    @Test
     void isEmailValidTest(){
         assertTrue(BankAccount.isEmailValid( "a@b.com"));   // valid email address
         assertFalse( BankAccount.isEmailValid(""));         // empty string
