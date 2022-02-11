@@ -15,6 +15,7 @@ class BankAccountTest {
 
     @Test
     void withdrawTest() throws InsufficientFundsException{
+        //change to Teller.withdraw
         BankAccount bankAccount = new BankAccount("a@b.com", 200);
         bankAccount.withdraw(100);
 
@@ -27,6 +28,21 @@ class BankAccountTest {
         assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(-100)); // negative amount - boarder case
         assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(1.234)); // decimal
     }
+
+    @Test
+    void depositTest(){
+        BankAccount bankAccount = new BankAccount("a@b.com", 200);
+
+        // Teller.deposit(0); not working
+        bankAccount.deposit(0); // test for withdrawing 0
+        assertEquals(200, bankAccount.getBalance(), 0.001);
+        bankAccount.deposit(50);    //add
+        assertEquals(250, bankAccount.getBalance(), 0.001);
+        assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(-100)); // negative amount
+        assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(1.234)); // decimal
+    }
+
+    
 
     @Test
     void isEmailValidTest(){

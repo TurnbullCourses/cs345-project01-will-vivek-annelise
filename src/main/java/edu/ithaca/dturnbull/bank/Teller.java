@@ -7,7 +7,7 @@ public class Teller {
         return account.balance;
     }
 
-    public void deposite(double amount){
+    public void deposit(double amount){
 
     }
 
