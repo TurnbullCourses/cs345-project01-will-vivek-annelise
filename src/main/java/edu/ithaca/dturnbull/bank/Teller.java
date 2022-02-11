@@ -7,13 +7,12 @@ public class Teller {
         return account.balance;
     }
 
-    //I feel like these methods should be in Account rather than in Teller
-    public void deposit(Account account, double amount){
+    public static void deposit(Account account, double amount){
         if(amountValid(amount) == false){
             throw new IllegalArgumentException();
         }
 
-        account.setBalance(account.getBalance() + amount);
+        account.balance+= amount;
     }
 
 
@@ -41,14 +40,14 @@ public class Teller {
      * @throws InsufficientFundsException
      * @post reduces the balance by amount if amount is non-negative and smaller than balance
      */
-    public void withdraw(double amount) throws InsufficientFundsException{
+    public static void withdraw(Account account, double amount) throws InsufficientFundsException{
         if(amountValid(amount) == false){
             throw new IllegalArgumentException("invalid withdrawl amount");
         }
-        if (amount <= balance){
-            balance -= amount;
+        if (amount <= account.balance){
+            account.balance -= amount;
         }
-        if (amount > balance){
+        if (amount > account.balance){
             throw new InsufficientFundsException("Not enough money");
         }
     }
@@ -57,11 +56,12 @@ public class Teller {
         if(amountValid(amount) == false){
             throw new IllegalArgumentException();
         }
-        if (amount > balance){
+        if (amount > accountFrom.balance){
             throw new InsufficientFundsException("Not enough money");
         }
         else{
-            Teller.withdraw(accountFrom, amount)
+            withdraw(accountFrom, amount);
+            deposit(accountTo, amount);
         }
     }
 

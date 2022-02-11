@@ -31,15 +31,15 @@ class BankAccountTest {
 
     @Test
     void depositTest(){
-        BankAccount bankAccount = new BankAccount("a@b.com", 200);
+        Account bankAccount = new Account();
 
         // Teller.deposit(0); not working
-        bankAccount.deposit(0); // test for withdrawing 0
-        assertEquals(200, bankAccount.getBalance(), 0.001);
-        bankAccount.deposit(50);    //add
-        assertEquals(250, bankAccount.getBalance(), 0.001);
-        assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(-100)); // negative amount
-        assertThrows(IllegalArgumentException.class, () -> bankAccount.withdraw(1.234)); // decimal
+        Teller.deposit(bankAccount, 0); // test for withdrawing 0
+        assertEquals(200, bankAccount.balance, 0.001);
+        bankAccount.deposit(bankAccount, 50);    //add
+        assertEquals(250, bankAccount.balance, 0.001);
+        assertThrows(IllegalArgumentException.class, () -> Teller.withdraw(bankAccount, -100)); // negative amount
+        assertThrows(IllegalArgumentException.class, () -> Teller.withdraw(bankAccount, 1.234)); // decimal
     }
 
     

@@ -10,12 +10,6 @@ public class Account {
         balance = 0; //start with no money
         frozen = false; //account starts open
     }
-
-    public double getBalance(){
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
 }
+
+   
