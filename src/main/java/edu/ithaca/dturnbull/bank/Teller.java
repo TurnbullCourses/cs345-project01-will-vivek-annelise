@@ -52,7 +52,7 @@ public class Teller {
         }
     }
 
-    public void transfer(Account accountTo, Account accountFrom, double amount) throws InsufficientFundsException{
+    public static void transfer(Account accountTo, Account accountFrom, double amount) throws InsufficientFundsException{
         if(amountValid(amount) == false){
             throw new IllegalArgumentException();
         }

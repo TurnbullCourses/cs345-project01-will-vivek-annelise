@@ -36,7 +36,7 @@ class BankAccountTest {
         // Teller.deposit(0); not working
         Teller.deposit(bankAccount, 0); // test for withdrawing 0
         assertEquals(200, bankAccount.balance, 0.001);
-        bankAccount.deposit(bankAccount, 50);    //add
+        Teller.deposit(bankAccount, 50);    //add
         assertEquals(250, bankAccount.balance, 0.001);
         assertThrows(IllegalArgumentException.class, () -> Teller.withdraw(bankAccount, -100)); // negative amount
         assertThrows(IllegalArgumentException.class, () -> Teller.withdraw(bankAccount, 1.234)); // decimal
@@ -48,14 +48,14 @@ class BankAccountTest {
         Account bankAccount = new Account();
         Account bankAccount2 = new Account();
 
-        //Change to Teller.transfer
-        Teller.transfer(bankAccount, 50, bankAccount2); //valid transfer
-        assertEquals(150, bankAccount.getBalance());
-        assertEquals(250, bankAccount2.getBalance());
-
-        assertThrows(InsufficientFundsException.class, () -> bankAccount.transfer(300, bankAccount2)); //withdraw too much
-        assertThrows(IllegalArgumentException.class, () -> bankAccount.transfer(-100, bankAccount2)); // negative amount
-        assertThrows(IllegalArgumentException.class, () -> bankAccount.transfer(1.234, bankAccount2)); // decimal
+        Teller.deposit(bankAccount, 150);
+        Teller.deposit(bankAccount2, 250);
+        Teller.transfer(bankAccount, bankAccount2, 50); //valid transfer
+        
+        assertEquals(200, bankAccount.balance, 0.001);
+        assertThrows(InsufficientFundsException.class, () -> Teller.transfer(bankAccount, bankAccount2, 300)); //withdraw too much
+        assertThrows(IllegalArgumentException.class, () -> Teller.transfer(bankAccount, bankAccount2, -100)); // negative amount
+        assertThrows(IllegalArgumentException.class, () -> Teller.transfer(bankAccount, bankAccount2, 1.234)); // decimal
 
     }
 
