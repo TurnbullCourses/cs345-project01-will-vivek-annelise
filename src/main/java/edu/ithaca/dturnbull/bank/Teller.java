@@ -8,7 +8,11 @@ public class Teller {
     }
 
     public void deposit(double amount){
-        
+        if(amountValid(amount) == false){
+            throw new IllegalArgumentException();
+        }
+
+        balance+=amount;
     }
 
 
