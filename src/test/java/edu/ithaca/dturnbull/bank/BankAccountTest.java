@@ -60,22 +60,25 @@ class BankAccountTest {
     }
 
     @Test
-    void freezeAccount(){
-        BankAccount account = new BankAccount("a@b.com", 200);
-        account.deposit(100);
-        assertEquals(300, account.getBalance());
+    void freezeAccountTest(){
+        Account account1 = new Account();
+        Teller teller1 = new Teller();
 
-        Teller.freezeAccount(account);
+        teller1.deposit(account1, 300);
 
-        assertThrows(FrozenAccountException.class, ()-> account.deposit(1300));
-        assertThrows(FrozenAccountException.class, ()-> account.withdraw(300));
+        assertEquals(300, teller1.getBalance(account1));
 
-        BankAccount account2 = new BankAccount("a@b.com", 0);
-        assertThrows(FrozenAccountException.class, ()-> account.transfer(250, account2));
+        teller1.freezeAccount(account1);
 
-        Teller.unfreezeAccount(account);
-        account.deposit(300);
-        assertEquals(600, account.getBalance());
+        assertThrows(FrozenAccountException.class, ()-> teller1.deposit(account1, 1300));
+        assertThrows(FrozenAccountException.class, ()-> teller1.withdraw(account1, 300));
+
+        Account account2 = new Account();
+        assertThrows(FrozenAccountException.class, ()-> teller1.transfer(account1, account2, 250));
+
+        teller1.unfreezeAccount(account1);
+        teller1.deposit(account1, 300);
+        assertEquals(600, teller1.getBalance(account1));
     }
 
     @Test
