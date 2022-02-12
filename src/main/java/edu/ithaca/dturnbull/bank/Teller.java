@@ -103,7 +103,7 @@ public class Teller {
      * @param account
      * @post freezes account
      */
-    public void freezeAccount(Account account){
+    public static void freezeAccount(Account account){
         account.frozen = true;
 
     }
@@ -112,7 +112,7 @@ public class Teller {
      * @param account
      * @post unfreezes account
      */
-    public void unfreezeAccount(Account account){
+    public static void unfreezeAccount(Account account){
         account.frozen = false;
 
     }
