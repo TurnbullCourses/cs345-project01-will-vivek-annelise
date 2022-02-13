@@ -25,7 +25,7 @@ public class Teller {
             throw new IllegalArgumentException();
         }
 
-        account.balance+= amount;
+        account.deposit(amount);
     }
 
     /**
