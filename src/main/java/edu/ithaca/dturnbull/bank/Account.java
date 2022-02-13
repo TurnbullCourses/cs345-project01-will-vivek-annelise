@@ -10,6 +10,8 @@ public class Account {
         balance = 0; //start with no money
         frozen = false; //account starts open
     }
-}
 
-   
+    public void deposit(double amount){
+        balance+= amount;
+    }
+}
