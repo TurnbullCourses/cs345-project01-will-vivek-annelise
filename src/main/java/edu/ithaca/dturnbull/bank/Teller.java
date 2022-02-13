@@ -16,15 +16,17 @@ public class Teller {
      * @throws FrozenAccountException
      * @post account will have amount more in balance
      */
-    public static void deposit(Account account, double amount) throws FrozenAccountException{
-        checkFrozen(account);
+    public static void deposit(Account account, double amount) throws IllegalArgumentException, FrozenAccountException{
+        if (checkFrozen(account)){
+            throw new FrozenAccountException("Cannot deposit on a frozen account");
+        }
+
         if(amountValid(amount) == false){
             throw new IllegalArgumentException();
         }
 
         account.balance+= amount;
     }
-
 
     /**
      * @param amount
@@ -50,9 +52,13 @@ public class Teller {
      * @param account
      * @throws FrozenAccountException
      */
-    public static void checkFrozen(Account account) throws FrozenAccountException{
-        if(account.frozen == true){
-            throw new FrozenAccountException();
+    public static boolean checkFrozen(Account account) throws FrozenAccountException{
+
+        if (account.frozen){ // If account is frozen, return true
+            return true;
+        }
+        else{
+            return false; // If account is not frozen
         }
     }
 
@@ -64,7 +70,9 @@ public class Teller {
      * @post reduces the balance by amount if amount is non-negative and smaller than balance
      */
     public static void withdraw(Account account, double amount) throws InsufficientFundsException, FrozenAccountException{
-        checkFrozen(account);
+        if (checkFrozen(account)){
+            throw new FrozenAccountException("Cannot withdraw on a frozen account");
+        }
         if(amountValid(amount) == false){
             throw new IllegalArgumentException("invalid withdrawl amount");
         }
@@ -84,13 +92,14 @@ public class Teller {
      * @throws FrozenAccountException
      * @post accountTo's balance is increased by amount, accountFrom's balance is decreased by amount
      */
-    public static void transfer(Account accountTo, Account accountFrom, double amount) throws InsufficientFundsException, FrozenAccountException{
-        checkFrozen(accountTo);
-        checkFrozen(accountFrom);
-        if(amountValid(amount) == false){
-            throw new IllegalArgumentException();
+    public static void transfer(Account accountFrom, Account accountTo, double amount) throws InsufficientFundsException, FrozenAccountException{
+        if (checkFrozen(accountFrom) || checkFrozen(accountTo)){
+            throw new FrozenAccountException("Cannot transfer to one or both of the frozen accounts");
         }
-        if (amount > accountFrom.balance){
+        if(amountValid(amount) == false){
+            throw new IllegalArgumentException("Invalid transfer amount");
+        }
+        if (amount > Teller.getBalance(accountFrom)){
             throw new InsufficientFundsException("Not enough money");
         }
         else{
