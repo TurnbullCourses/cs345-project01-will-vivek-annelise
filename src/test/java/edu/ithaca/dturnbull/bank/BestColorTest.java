@@ -7,6 +7,6 @@ public class BestColorTest {
     
     @Test
     public void BestColorTest(){
-        assertEquals("purple", BestColor.getBestColor());
+        assertEquals("green", BestColor.getBestColor());
     }
 }
