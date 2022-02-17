@@ -5,10 +5,11 @@ public abstract class Account {
     double balance;
     boolean frozen;
 
-    public Account(){
+    public Account(Customer customer){
         accountNum = 0; //should be random 
         balance = 0; //start with no money
         frozen = false; //account starts open
+        customer.accounts.add(this);
     }
     
 
