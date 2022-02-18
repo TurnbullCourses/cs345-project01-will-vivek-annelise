@@ -1,8 +1,10 @@
 package edu.ithaca.dturnbull.bank;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;  
 import java.time.format.DateTimeFormatter;  
 import java.util.ArrayList;
+
 
 public abstract class Account {
     int accountNum;
@@ -32,7 +34,7 @@ public abstract class Account {
         amountValid(amount);
         isFrozen(this);
         balance += amount;
-        transactions.add(new Transaction(amount, String java.time.LocalDate.now(), "deposit"));
+        transactions.add(new Transaction(amount, java.time.LocalDate.now(), "deposit"));
     }
 
     /**

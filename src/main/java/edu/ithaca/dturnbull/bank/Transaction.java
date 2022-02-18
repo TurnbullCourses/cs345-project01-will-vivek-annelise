@@ -1,11 +1,13 @@
 package edu.ithaca.dturnbull.bank;
 
+import java.time.LocalDate;
+
 public class Transaction {
     double amount;
-    String date;
+    LocalDate date;
     String type;
 
-    public Transaction(double amount, String date, String type){
+    public Transaction(double amount, LocalDate date, String type){
         this.amount = amount;
         this.date = date;
         this.type = type;
