@@ -19,7 +19,7 @@ public class AccountTest {
 
         //need admin to free for these tests 
         
-        assertThrows(IllegalArgumentException.class, () -> Account.frozen(10.111));
+        assertThrows(IllegalArgumentException.class, () -> Account.isFrozen());
     }
 
 }

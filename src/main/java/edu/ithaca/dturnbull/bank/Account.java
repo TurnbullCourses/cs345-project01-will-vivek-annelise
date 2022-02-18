@@ -1,9 +1,14 @@
 package edu.ithaca.dturnbull.bank;
 
+import java.time.LocalDateTime;  
+import java.time.format.DateTimeFormatter;  
+import java.util.ArrayList;
+
 public abstract class Account {
     int accountNum;
     double balance;
     boolean frozen;
+    ArrayList<Transaction> transactions;
 
     public Account(){
         accountNum = 0; //should be random 
@@ -27,6 +32,7 @@ public abstract class Account {
         amountValid(amount);
         isFrozen(this);
         balance += amount;
+        transactions.add(new Transaction(amount, String java.time.LocalDate.now(), "deposit"));
     }
 
     /**

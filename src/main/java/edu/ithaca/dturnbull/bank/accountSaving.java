@@ -1,7 +1,12 @@
 package edu.ithaca.dturnbull.bank;
 
-public class accountSaving{
+public class accountSaving extends Account{
     double dailyMax;
+
+    public accountSaving(Customer customer){
+        super();
+        customer.accounts.add(this);
+    }
 
     public double getIntrest(){
         return -1;
