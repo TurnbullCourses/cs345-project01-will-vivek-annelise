@@ -5,13 +5,18 @@ public abstract class Account {
     double balance;
     boolean frozen;
 
-    public Account(Customer customer){
+    public Account(){
         accountNum = 0; //should be random 
         balance = 0; //start with no money
         frozen = false; //account starts open
-        customer.accounts.add(this);
     }
     
+    /**
+     * @return balance 
+     */
+    public double getBalance(){
+        return balance;
+    }
 
     /**
      * @param amount
@@ -21,7 +26,7 @@ public abstract class Account {
     public void deposit(double amount) throws FrozenAccountException, IllegalArgumentException{
         amountValid(amount);
         isFrozen(this);
-        balance+= amount;
+        balance += amount;
     }
 
     /**
@@ -30,12 +35,22 @@ public abstract class Account {
      * @throws IllegalArgumentException
      */
     public void withdraw(double amount)throws FrozenAccountException, IllegalArgumentException{
+        amountValid(amount);
+        isFrozen(this);
+        balance -= amount;
+    }
 
+
+    public void transfer(double amount, Account target) throws FrozenAccountException{
+        amountValid(amount);
+        isFrozen(this);
+        isFrozen(target, "target account is frozen"); 
+        balance -= amount;
+        target.balance += amount;
     }
 
     /**
-     * @throws IllegalArgumentException
-     * @returns false if negative or has 2 decimal places
+     * @throws IllegalArgumentException if amount is less than 0 or if it has too many decimals
      */
     public static void amountValid(double amount) throws IllegalArgumentException{
         //check for negative
@@ -56,6 +71,16 @@ public abstract class Account {
     public static void isFrozen(Account account) throws FrozenAccountException{
         if (account.frozen == true){
             throw new FrozenAccountException();
+        }
+    }
+
+    /**
+     * @param account
+     * @throws FrozenAccountException
+     */
+    public static void isFrozen(Account account, String text) throws FrozenAccountException{
+        if (account.frozen == true){
+            throw new FrozenAccountException(text);
         }
     }
 }
