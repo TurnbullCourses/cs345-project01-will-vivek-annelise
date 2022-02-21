@@ -3,7 +3,11 @@ package edu.ithaca.dturnbull.bank;
 public class Admin {
 
     public double getAllMoney(){
-        return 0.0;
+        double totalMoney = 0;
+        for(Account account : Bank.getAllAccounts()){
+            totalMoney+=account.balance;
+        }
+        return totalMoney;
     }
 
     public int[] getReport(Account account){
