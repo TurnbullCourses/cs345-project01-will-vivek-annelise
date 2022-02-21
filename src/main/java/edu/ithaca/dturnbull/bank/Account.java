@@ -46,6 +46,7 @@ public abstract class Account {
         amountValid(amount);
         isFrozen(this);
         balance -= amount;
+        transactions.add(new Transaction(amount, java.time.LocalDate.now(), "withdraw"));
     }
 
 
@@ -55,6 +56,8 @@ public abstract class Account {
         isFrozen(target, "target account is frozen"); 
         balance -= amount;
         target.balance += amount;
+        transactions.add(new Transaction(amount, java.time.LocalDate.now(), "transferTo"));
+        target.transactions.add(new Transaction(amount, java.time.LocalDate.now(), "transferFrom"));
     }
 
     /**
