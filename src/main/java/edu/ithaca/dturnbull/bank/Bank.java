@@ -11,29 +11,29 @@ public class Bank {
     ArrayList<Teller> allTellers = new ArrayList<Teller>();
     ArrayList<Admin> allAdmin = new ArrayList<Admin>();
 
-    /**
-     * @post gives access to list
-     * @return list of all accounts
-     */
-    public static ArrayList<Account> getAllAccounts(){
-        return allAccounts;
-    }
+    // /**
+    //  * @post gives access to list
+    //  * @return list of all accounts
+    //  */
+    // public static ArrayList<Account> getAllAccounts(){
+    //     return allAccounts;
+    // }
 
-    /**
-     * @post gives access to list
-     * @return list of all tellers
-     */
-    public ArrayList<Teller> getAllTellers(){
-        return allTellers;
-    }
+    // /**
+    //  * @post gives access to list
+    //  * @return list of all tellers
+    //  */
+    // public ArrayList<Teller> getAllTellers(){
+    //     return allTellers;
+    // }
 
-    /**
-     * @post gives access to list
-     * @return list of all accounts
-     */
-    public ArrayList<Admin> getAllAdmin(){
-        return allAdmin;
-    }
+    // /**
+    //  * @post gives access to list
+    //  * @return list of all accounts
+    //  */
+    // public ArrayList<Admin> getAllAdmin(){
+    //     return allAdmin;
+    // }
 
     /**
      * @param account
