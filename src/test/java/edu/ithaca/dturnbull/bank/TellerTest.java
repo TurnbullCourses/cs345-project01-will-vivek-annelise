@@ -86,5 +86,20 @@ public class TellerTest {
         assertThrows(IllegalArgumentException.class, () -> atm1.transfer(bankAccountFrom, bankAccountTo, 1.234));
 
     }
+
+    @Test
+    void createAccountTest() {
+        tellerHuman human1 = new tellerHuman();
+        Customer customer1 = new Customer();
+
+        // customer1 should have no accounts
+        assertEquals(0, customer1.accounts.size());
+
+        human1.createAccount(customer1);
+
+        // customer1 should have 2 accounts (checking and savings)
+        assertEquals(2, customer1.accounts.size());
+
+    }
     
 }
