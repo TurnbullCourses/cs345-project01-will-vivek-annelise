@@ -18,8 +18,13 @@ public class AccountTest {
     @Test
     public void isFrozenTest() throws FrozenAccountException{
         Account tAccount = new accountChecking();
-        Admin.freeze(tAccount);
-        assertThrows(IllegalArgumentException.class, () -> Account.isFrozen(tAccount));
+        Account tAccount2 = new accountChecking();
+        Admin tAdmin = new Admin();
+        tAdmin.freeze(tAccount);
+        assertThrows(FrozenAccountException.class, () -> Account.isFrozen(tAccount));
+        assertThrows(FrozenAccountException.class, () -> tAccount.withdraw(100));
+        assertThrows(FrozenAccountException.class, () -> tAccount.transfer(10, tAccount2));
+        assertThrows(FrozenAccountException.class, () -> tAccount2.transfer(10, tAccount));
     }
 
     @Test
