@@ -9,12 +9,13 @@ public class Customer {
     String email;
     ArrayList<Account> accounts;
 
-    public Customer(){
-        String password = null;
-        String username = null;
-        String email = null;
-        ArrayList<Account> accounts = new ArrayList<>();
+    public Customer(String username, String password, String email){
+        this.password = password;
+        this.username = username;
+        this.email = email;
+        ArrayList<Account> accounts = new ArrayList<Account>();
     }
+
 
     public ArrayList<Account> getAccounts(){
         return accounts;
