@@ -19,9 +19,8 @@ public class Admin {
      * @param account
      * @post freezes account
      */
-    public void freezeAccount(Account account){
+    public void freeze(Account account){
         account.frozen = true;
-
     }
 
     /**
