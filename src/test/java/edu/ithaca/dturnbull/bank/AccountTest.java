@@ -17,9 +17,19 @@ public class AccountTest {
     @Test
     public void isFrozenTest() throws FrozenAccountException{
 
-        //need admin to free for these tests 
+        //need admin for these tests 
         
         assertThrows(IllegalArgumentException.class, () -> Account.isFrozen());
+    }
+
+    @Test
+    public void withdrawDepositTest(){
+
+    }
+
+    @Test
+    public void transferTest(){
+        
     }
 
 }

@@ -60,6 +60,10 @@ public abstract class Account {
         target.transactions.add(new Transaction(amount, java.time.LocalDate.now(), "transferFrom"));
     }
 
+    public ArrayList<Transaction> getTransactions(){
+        return transactions;
+    }
+
     /**
      * @throws IllegalArgumentException if amount is less than 0 or if it has too many decimals
      */
