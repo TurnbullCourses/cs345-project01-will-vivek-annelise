@@ -7,7 +7,17 @@ public class Customer {
     String password;
     String username;
     String email;
-    //Account[] accounts;
+    ArrayList<Account> accounts;
 
-    ArrayList<Account> accounts = Bank.allAccounts;
+    public Customer(){
+        String password = null;
+        String username = null;
+        String email = null;
+        ArrayList<Account> accounts = new ArrayList<>();
+    }
+
+    public ArrayList<Account> getAccounts(){
+        return accounts;
+    }
+
 }
