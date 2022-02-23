@@ -6,4 +6,5 @@ public class Bank {
     static ArrayList<Account> allAccounts = new ArrayList<Account>();
     static ArrayList<Teller> allTellers = new ArrayList<Teller>();
     static ArrayList<Admin> allAdmin = new ArrayList<Admin>();
+    static ArrayList<Customer> allCustomer = new ArrayList<Customer>();
 }
