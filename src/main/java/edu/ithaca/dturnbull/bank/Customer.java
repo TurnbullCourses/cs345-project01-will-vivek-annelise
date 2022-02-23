@@ -16,5 +16,7 @@ public class Customer {
         ArrayList<Account> accounts = new ArrayList<>();
     }
 
-    public ArrayList
+    public ArrayList<Account> getAccounts(){
+        return accounts;
+    }
 }

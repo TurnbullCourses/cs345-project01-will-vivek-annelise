@@ -7,4 +7,8 @@ public class accountChecking extends Account {
         customer.accounts.add(this);
     }
 
+    public accountChecking(){
+        super();
+    }
+
 }

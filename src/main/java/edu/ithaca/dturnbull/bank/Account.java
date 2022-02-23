@@ -16,6 +16,7 @@ public abstract class Account {
         accountNum = 0; //should be random 
         balance = 0; //start with no money
         frozen = false; //account starts open
+        transactions = new ArrayList<Transaction>();
     }
     
     /**
@@ -41,10 +42,14 @@ public abstract class Account {
      * @param amount
      * @throws FrozenAccountException
      * @throws IllegalArgumentException
+     * @throws InsufficientFundsException
      */
-    public void withdraw(double amount)throws FrozenAccountException, IllegalArgumentException{
+    public void withdraw(double amount)throws FrozenAccountException, IllegalArgumentException, InsufficientFundsException{
         amountValid(amount);
         isFrozen(this);
+        if (amount > balance){
+            throw new InsufficientFundsException("Insufficient Funds");
+        }
         balance -= amount;
         transactions.add(new Transaction(amount, java.time.LocalDate.now(), "withdraw"));
     }
@@ -56,8 +61,8 @@ public abstract class Account {
         isFrozen(target, "target account is frozen"); 
         balance -= amount;
         target.balance += amount;
-        transactions.add(new Transaction(amount, java.time.LocalDate.now(), "transferTo"));
-        target.transactions.add(new Transaction(amount, java.time.LocalDate.now(), "transferFrom"));
+        transactions.add(new Transaction(amount, java.time.LocalDate.now(), "transferTo", target));
+        target.transactions.add(new Transaction(amount, java.time.LocalDate.now(), "transferFrom", this));
     }
 
     public ArrayList<Transaction> getTransactions(){
