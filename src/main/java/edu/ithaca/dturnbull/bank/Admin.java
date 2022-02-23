@@ -1,13 +1,9 @@
 package edu.ithaca.dturnbull.bank;
 
 public class Admin {
+    
 
-
-    public Admin(){
-        
-    }
-
-    public double getAllMoney(){
+    static public double getAllMoney(){
         double totalMoney = 0;
         for(Account account : Bank.allAccounts){
             totalMoney+=account.balance;
