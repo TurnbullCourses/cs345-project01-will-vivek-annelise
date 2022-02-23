@@ -1,6 +1,6 @@
 package edu.ithaca.dturnbull.bank;
 
-public class ATM {
+public class ATM extends Teller{
     
     
 }

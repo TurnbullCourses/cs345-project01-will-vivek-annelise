@@ -1,6 +1,6 @@
 package edu.ithaca.dturnbull.bank;
 
-public class tellerHuman {
+public class tellerHuman extends Teller{
     
     public void createAccount(Customer customer){
 
