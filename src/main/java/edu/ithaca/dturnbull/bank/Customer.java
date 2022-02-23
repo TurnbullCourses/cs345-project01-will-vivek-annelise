@@ -19,4 +19,5 @@ public class Customer {
     public ArrayList<Account> getAccounts(){
         return accounts;
     }
+
 }
