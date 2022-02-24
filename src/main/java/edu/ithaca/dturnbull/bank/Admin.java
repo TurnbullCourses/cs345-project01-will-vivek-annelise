@@ -1,7 +1,5 @@
 package edu.ithaca.dturnbull.bank;
 
-import java.util.ArrayList;
-
 public class Admin {
 
     static public double getAllMoney(){
@@ -12,17 +10,12 @@ public class Admin {
         return totalMoney;
     }
 
-<<<<<<< HEAD
     public String getReport(Account account){
         String report = "";
         for(Transaction transaction : account.transactions){
             report.concat(transaction.toString());
         }
         return report;
-=======
-    public ArrayList<Transaction> getReport(Account account){
-        return account.transactions;
->>>>>>> main
     }
 
 

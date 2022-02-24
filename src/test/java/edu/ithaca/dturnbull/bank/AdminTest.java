@@ -22,4 +22,9 @@ public class AdminTest {
 
         assertEquals(60, Admin.getAllMoney());
     }
+
+    @Test
+    void reportTest(){
+        
+    }
 }
