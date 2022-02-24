@@ -10,8 +10,12 @@ public class Admin {
         return totalMoney;
     }
 
-    public int[] getReport(Account account){
-        return null;
+    public String getReport(Account account){
+        String report = "";
+        for(Transaction transaction : account.transactions){
+            report.concat(transaction.toString());
+        }
+        return report;
     }
 
 
