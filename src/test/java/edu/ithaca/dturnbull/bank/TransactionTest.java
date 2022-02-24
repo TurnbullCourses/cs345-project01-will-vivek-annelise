@@ -19,7 +19,7 @@ public class TransactionTest {
         Account tAccount2 = new accountChecking();
 
         tAccount.transfer(50, tAccount2);
-        assertEquals("transferTo, Amount: 50, Date: " + java.time.LocalDate.now() + ", Target: tAccount2", tAccount.transactions.get(2).toString()); //how to check this
-        assertEquals("transferFrom, Amount: 50, Date: " + java.time.LocalDate.now() + ", Target: tAccount", tAccount.transactions.get(2).toString()); //how to check this
+        assertEquals("transferTo, Amount: 50.0, Date: " + java.time.LocalDate.now() + ", Target: 0", tAccount.transactions.get(2).toString()); //how to check this
+        assertEquals("transferFrom, Amount: 50.0, Date: " + java.time.LocalDate.now() + ", Target: 0", tAccount2.transactions.get(0).toString()); //target is 0 because account is just for tests and has no ID
     }
 }

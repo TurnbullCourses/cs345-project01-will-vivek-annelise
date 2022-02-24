@@ -27,7 +27,7 @@ public class Transaction {
         if (target == null){
             return type + ", Amount: " + amount + ", Date: " + date;
         } else {
-            return type + ", Amount: " + amount + ", Date: " + date + ", Target: " + target;   
+            return type + ", Amount: " + amount + ", Date: " + date + ", Target: " + target.toString();   
         }
     }
 

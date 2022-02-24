@@ -26,6 +26,11 @@ public abstract class Account {
         return balance;
     }
 
+    @Override
+    public String toString(){
+        return Integer.toString(accountNum);
+    }
+
     /**
      * @param amount
      * @throws FrozenAccountException
