@@ -29,7 +29,6 @@ public class Transaction {
         } else {
             return type + ", Amount: " + amount + ", Date: " + date + ", Target: " + target;   
         }
-        
     }
 
 }

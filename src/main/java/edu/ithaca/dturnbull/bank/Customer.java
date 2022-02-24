@@ -22,12 +22,4 @@ public class Customer {
     public ArrayList<Account> getAccounts(){
         return accounts;
     }
-
-    public boolean checkLogin(String email, String password){
-        if (Bank.allLogins.get(password) == email){
-            return true;
-        } else {
-            return false;
-        }
-    }
 }
