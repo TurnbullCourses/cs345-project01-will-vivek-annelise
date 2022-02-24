@@ -1,9 +1,9 @@
 package edu.ithaca.dturnbull.bank;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Customer {
-    
     String password;
     String username;
     String email;
@@ -13,6 +13,7 @@ public class Customer {
         this.password = password;
         this.username = username;
         this.email = email;
+        Bank.allLogins.put(password, email);
         ArrayList<Account> accounts = new ArrayList<Account>();
     }
 
@@ -21,4 +22,11 @@ public class Customer {
         return accounts;
     }
 
+    public boolean checkLogin(String email, String password){
+        if (Bank.allLogins.get(password) == email){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
