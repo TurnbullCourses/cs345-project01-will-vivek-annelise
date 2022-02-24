@@ -13,7 +13,7 @@ public class Customer {
         this.password = password;
         this.username = username;
         this.email = email;
-        ArrayList<Account> accounts = new ArrayList<Account>();
+        this.accounts = new ArrayList<Account>();
     }
 
 
