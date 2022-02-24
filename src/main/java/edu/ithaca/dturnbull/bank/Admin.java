@@ -1,7 +1,8 @@
 package edu.ithaca.dturnbull.bank;
 
+import java.util.ArrayList;
+
 public class Admin {
-    
 
     static public double getAllMoney(){
         double totalMoney = 0;
@@ -11,8 +12,8 @@ public class Admin {
         return totalMoney;
     }
 
-    public int[] getReport(Account account){
-        return null;
+    public ArrayList<Transaction> getReport(Account account){
+        return account.transactions;
     }
 
 
