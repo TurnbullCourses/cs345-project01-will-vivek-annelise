@@ -19,8 +19,7 @@ public class AccountTest {
     public void isFrozenTest() throws FrozenAccountException{
         Account tAccount = new accountChecking();
         Account tAccount2 = new accountChecking();
-        Admin tAdmin = new Admin();
-        tAdmin.freeze(tAccount);
+        Admin.freeze(tAccount);
         assertThrows(FrozenAccountException.class, () -> Account.isFrozen(tAccount));
         assertThrows(FrozenAccountException.class, () -> tAccount.withdraw(100));
         assertThrows(FrozenAccountException.class, () -> tAccount.transfer(10, tAccount2));
