@@ -29,6 +29,7 @@ public class AdminTest {
 
     @Test
     void freezeGetReportTest(){
+        //test freezeAcc and getReport
         Customer customer = new Customer("c1", "p1", "a@b.c");
         accountSaving account1 = new accountSaving(customer);
         Admin.freeze(account1);
@@ -47,6 +48,12 @@ public class AdminTest {
         myArray.add(account2);
         myArray.add(account3);
 
+        assertEquals(myArray, Admin.getReport());
+        //-------------------------------------------------------------//
+        //test unfreezeAcc
+        myArray.remove(account2);
+        Admin.unfreeze(account2);
+        
         assertEquals(myArray, Admin.getReport());
     }
 }
