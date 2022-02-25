@@ -17,7 +17,7 @@ public class Admin {
     public static ArrayList<Account> getReport(){
         ArrayList<Account>susAcc = new ArrayList<>();
         for(Account account : Bank.allAccounts){
-            if(account.frozen = true){
+            if(account.frozen == true){
                 susAcc.add(account);
             }
         }
