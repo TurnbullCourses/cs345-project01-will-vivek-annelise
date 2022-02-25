@@ -8,6 +8,7 @@ public class accountSaving extends Account{
     public accountSaving(Customer customer){
         super();
         customer.accounts.add(this);
+        Bank.allAccounts.add(this);
     }
 
     public accountSaving(){
