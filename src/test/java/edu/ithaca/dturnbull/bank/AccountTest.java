@@ -61,4 +61,21 @@ public class AccountTest {
 
     }
 
+    @Test
+    public void accountSavingTest() throws IllegalArgumentException, FrozenAccountException, InsufficientFundsException{
+        accountSaving tAccount = new accountSaving();
+        tAccount.deposit(1000);
+
+        assertEquals(1000, tAccount.getDailyMax());
+
+        tAccount.withdraw(100);
+
+        assertEquals(900, tAccount.getDailyMax());
+
+        tAccount.transfer(450, new accountChecking());
+
+        assertEquals(450, tAccount.getDailyMax());
+
+    }
+
 }
