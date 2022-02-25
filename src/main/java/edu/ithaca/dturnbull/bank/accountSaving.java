@@ -7,8 +7,17 @@ public class accountSaving extends Account{
 
     public accountSaving(Customer customer){
         super();
+        dailyMax = 1000;
         customer.accounts.add(this);
         Bank.allAccounts.add(this);
+    }
+
+    public accountSaving(Customer customer, double max){
+        super();
+        dailyMax = max;
+        customer.accounts.add(this);
+        Bank.allAccounts.add(this);
+
     }
 
     public accountSaving(){
@@ -31,5 +40,16 @@ public class accountSaving extends Account{
     public void setDailyMax(int amount){
         this.dailyMax = amount;
     }
+
+    public void withdraw(double amount){
+        this.withdraw(amount);
+        this.dailyMax -= amount;
+    }
+
+    public void transfer(double amount, Account target){
+        this.transfer(amount, target);
+        this.dailyMax -= amount;
+    }
+
 
 }
