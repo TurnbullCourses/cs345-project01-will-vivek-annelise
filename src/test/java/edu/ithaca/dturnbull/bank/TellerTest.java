@@ -7,23 +7,25 @@ import org.junit.jupiter.api.Test;
 
 public class TellerTest {
 
-    //TODO: Resolve issue with the Account abstract class
-
     @Test
     void getBalanceTest() throws IllegalArgumentException, FrozenAccountException {
          
-        Account account1 = new Account();
+        Account account1 = new accountChecking();
         ATM atm1 = new ATM();
-
         assertEquals(0, atm1.getBalance(account1));
-
         atm1.deposit(account1, 200);
         assertEquals(200, atm1.getBalance(account1), 0.001);
+
+        Account account2 = new accountSaving();
+        tellerHuman human1 = new tellerHuman();
+        assertEquals(0, human1.getBalance(account2));
+        human1.deposit(account2, 200);
+        assertEquals(200, human1.getBalance(account2), 0.001);
     }
 
     @Test
     void withdrawTest() throws InsufficientFundsException, FrozenAccountException{
-        Account account = new Account();
+        Account account = new accountChecking();
         ATM atm1 = new ATM();
 
         // withdrawing on an empty account 
@@ -36,7 +38,7 @@ public class TellerTest {
         // Withdrawing more than what you already have should throw InsufficientFundsException
         assertThrows(InsufficientFundsException.class, () -> atm1.withdraw(account, 300));
         
-        Account account2 = new Account();
+        Account account2 = new accountSaving();
         ATM atm2 = new ATM();
         // Withdrawing amount on an account with no balance
         atm2.withdraw(account2, 0);
@@ -50,7 +52,7 @@ public class TellerTest {
 
     @Test
     void depositTest() throws IllegalArgumentException, FrozenAccountException{
-        Account bankAccount = new Account();
+        Account bankAccount = new accountChecking();
         tellerHuman human1 = new tellerHuman();
 
         // depositing nothing
@@ -68,8 +70,8 @@ public class TellerTest {
     
     @Test
     void transferTest() throws InsufficientFundsException, IllegalArgumentException, FrozenAccountException{
-        Account bankAccountFrom = new Account();
-        Account bankAccountTo = new Account();
+        Account bankAccountFrom = new accountChecking();
+        Account bankAccountTo = new accountSaving();
         ATM atm1 = new ATM();
 
         atm1.deposit(bankAccountFrom, 150);
@@ -90,15 +92,15 @@ public class TellerTest {
     @Test
     void createAccountTest() {
         tellerHuman human1 = new tellerHuman();
-        Customer customer1 = new Customer();
+        Customer customer1 = new Customer("user1", "123", "user1@mail.com");
 
         // customer1 should have no accounts
-        assertEquals(0, customer1.accounts.size());
+        assertEquals(0, customer1.getAccounts().size());
 
         human1.createAccount(customer1);
 
         // customer1 should have 2 accounts (checking and savings)
-        assertEquals(2, customer1.accounts.size());
+        assertEquals(2, customer1.getAccounts().size());
 
     }
     
