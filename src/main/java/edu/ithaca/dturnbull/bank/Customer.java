@@ -15,7 +15,6 @@ public class Customer {
         this.email = email;
         this.accounts = new ArrayList<Account>();
         Bank.allLogins.put(password, email);
-        ArrayList<Account> accounts = new ArrayList<Account>();
     }
 
 
