@@ -7,11 +7,26 @@ public class accountSaving extends Account{
 
     public accountSaving(Customer customer){
         super();
+        dailyMax = 1000;
         customer.accounts.add(this);
+        Bank.allAccounts.add(this);
+    }
+
+    public accountSaving(Customer customer, double max){
+        super();
+        dailyMax = max;
+        customer.accounts.add(this);
+        Bank.allAccounts.add(this);
+
     }
 
     public accountSaving(){
         super();
+        this.dailyMax = 1000;
+    }
+
+    public double getDailyMax(){
+        return dailyMax;
     }
 
     public double getIntrest(){
@@ -30,5 +45,18 @@ public class accountSaving extends Account{
     public void setDailyMax(int amount){
         this.dailyMax = amount;
     }
+
+    @Override
+    public void withdraw(double amount) throws IllegalArgumentException, FrozenAccountException, InsufficientFundsException{
+        this.dailyMax -= amount;
+        super.withdraw(amount);
+    }
+
+    @Override
+    public void transfer(double amount, Account target) throws FrozenAccountException{
+        this.dailyMax -= amount;
+        super.transfer(amount, target);
+    }
+
 
 }

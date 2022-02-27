@@ -11,9 +11,17 @@ public class Admin {
         }
         return totalMoney;
     }
-
-    public ArrayList<Transaction> getReport(Account account){
-        return account.transactions;
+    /**
+     * @returns list of all suspicious accounts (frozen)
+     */
+    public static ArrayList<Account> getReport(){
+        ArrayList<Account>susAcc = new ArrayList<>();
+        for(Account account : Bank.allAccounts){
+            if(account.frozen == true){
+                susAcc.add(account);
+            }
+        }
+        return susAcc;
     }
 
 
@@ -21,7 +29,7 @@ public class Admin {
      * @param account
      * @post freezes account
      */
-    public void freeze(Account account){
+    public static void freeze(Account account){
         account.frozen = true;
     }
 
@@ -29,7 +37,7 @@ public class Admin {
      * @param account
      * @post unfreezes account
      */
-    public void unfreeze(Account account){
+    public static void unfreeze(Account account){
         account.frozen = false;
     }
 
