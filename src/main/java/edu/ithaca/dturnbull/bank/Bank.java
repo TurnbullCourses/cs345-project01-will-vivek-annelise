@@ -10,6 +10,9 @@ public class Bank {
     static ArrayList<Customer> allCustomer = new ArrayList<Customer>();
     static HashMap<String, String> allLogins = new HashMap<String, String>();
 
+    public static void addLogin(String email, String password){
+        Bank.allLogins.put(password, email);
+    }
 
     public static boolean checkLogin(String email, String password){
         if (allLogins.get(password) == email){
