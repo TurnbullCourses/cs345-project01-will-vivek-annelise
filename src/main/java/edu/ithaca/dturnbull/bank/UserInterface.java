@@ -6,7 +6,6 @@ public class UserInterface {
     public static void main(String[] args) {
         String usernameIn, passwordIn, emailIn, option;
         Customer customer;
-        Bank bank = new Bank();
 
         Scanner scan = new Scanner(System.in);
 
@@ -19,9 +18,7 @@ public class UserInterface {
             option = scan.nextLine();
 
             if (option.equals("1")) {
-                // System.out.println("Logging in!");
                 System.out.println("=======================");
-                // System.out.println("size of allcustomers: " + Bank.allCustomer.size());
                 System.out.println("Enter your username:");
                 usernameIn = scan.nextLine();
                 System.out.println("Enter your password:");
@@ -29,15 +26,14 @@ public class UserInterface {
                 System.out.println("Enter your email:");
                 emailIn = scan.nextLine();
 
-                // System.out.println("emailIn: " + emailIn);
-                // System.out.println("passwordIn: " + passwordIn);
-                // System.out.println("checkLogin: " + Bank.checkLogin(emailIn, passwordIn));
 
-                // Encountering a problem around here. checkLogin is returning false when it
-                // shouldn't, though the unit test (UserInterfaceTest.java) works properly.
+                //TODO: Resolve issue with accessing customer inside this while loop. 
+
+                Bank.addLogin(emailIn, passwordIn);
 
                 if (Bank.checkLogin(emailIn, passwordIn)) {
-                    System.out.println("Successfully logged in! Welcome, customer " + usernameIn);
+                    customer = Bank.getCustomer(emailIn);
+                    System.out.println("Successfully logged in! Welcome, customer " + customer.username);
                 }
 
                 else {
@@ -47,9 +43,7 @@ public class UserInterface {
             }
 
             else if (option.equals("2")) {
-                // System.out.println("Registering!");
                 System.out.println("=======================");
-
                 System.out.println("Create your username:");
                 usernameIn = scan.nextLine();
                 System.out.println("Create your password:");
