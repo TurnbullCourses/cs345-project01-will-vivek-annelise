@@ -22,14 +22,13 @@ public class Bank {
         }
     }
 
-    public static Customer getCustomer(String email) throws CustomerNotFoundException{
+    public static Customer getCustomer(String email){
         for (Customer temp : allCustomer){
             if (temp.getEmail() == email){
                 return temp;
-            } else {
-                throw new CustomerNotFoundException("Customer not found");
             }
         }
+        return null;
 
     }
 }
