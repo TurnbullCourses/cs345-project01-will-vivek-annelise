@@ -21,4 +21,14 @@ public class Bank {
             return false;
         }
     }
+
+    public static Customer getCustomer(String email){
+        for (Customer temp : allCustomer){
+            if (temp.getEmail() == email){
+                return temp;
+            }
+        }
+        return null;
+
+    }
 }
