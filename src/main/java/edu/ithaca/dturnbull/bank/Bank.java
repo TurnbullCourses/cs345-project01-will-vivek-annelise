@@ -7,7 +7,7 @@ public class Bank {
     static ArrayList<Account> allAccounts = new ArrayList<Account>();
     static ArrayList<Teller> allTellers = new ArrayList<Teller>();
     static ArrayList<Admin> allAdmin = new ArrayList<Admin>();
-    static ArrayList<Customer> allCustomer = new ArrayList<Customer>();
+    static ArrayList<Customer> allCustomers = new ArrayList<Customer>();
     static HashMap<String, String> allLogins = new HashMap<String, String>();
 
     public static void addLogin(String email, String password){
@@ -23,12 +23,11 @@ public class Bank {
     }
 
     public static Customer getCustomer(String email){
-        for (Customer temp : allCustomer){
+        for (Customer temp : allCustomers){
             if (temp.getEmail() == email){
                 return temp;
             }
         }
         return null;
-
     }
 }
